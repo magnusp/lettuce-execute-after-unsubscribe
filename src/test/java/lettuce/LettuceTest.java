@@ -48,7 +48,7 @@ public class LettuceTest {
 	public void setup() {
 		proxy = toxiproxy.getProxy(redis, 6379);
 		RedisClient client = RedisClient
-			.create("redis://localhost:" + proxy.getProxyPort());
+			.create("redis://" + proxy.getContainerIpAddress() + ":" + proxy.getProxyPort());
 		commands = client.connect().reactive();
 	}
 
